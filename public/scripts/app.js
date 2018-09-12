@@ -94,4 +94,17 @@ function createTweetElement(tweetData){
 });
 
 
-  
+  // Post Tweet Ajax 
+
+  $("form").on("submit", function(event){
+      event.preventDefault();
+      let formData = $("for#tweet-form").serialize(); // Grab content of form
+      $.ajax("/tweets", {method:POST, data:formData} // submit using ajax
+      ).then(function(){ // clear form
+        $("form#tweet-form input").val('');
+        $(".tweet-id").empty();
+
+        return $.ajax('/tweets');
+      }).then(renderTweets)
+    });
+
