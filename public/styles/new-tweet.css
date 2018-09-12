@@ -1,3 +1,6 @@
+
+/* Styling New tweet form */
+
 .new-tweet {
     border: 1px solid grey;
     border-radius: 4px;
@@ -6,15 +9,12 @@
 
 }
 
-
 textarea {
     width: 94%;
    margin-left: 3%;
    margin-right: 3%;
     
 }
-
-
 
 h2 {
     margin: 0px 5px 20px 5px;
@@ -27,3 +27,115 @@ span.counter {
 input[value="Tweet"] {
     margin: 0px 90px 10px 10px;
 }
+
+
+
+/* Colour for char counter */
+
+.red{
+    color:red;
+} 
+
+/* Styling Sent Tweet article */
+
+
+.tweet-class {
+    border-radius: 10px;
+    border: 1px solid #eee;
+    margin: 10px 20px;
+    
+  }
+  
+  .tweet-class header {
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    background-color: #eee;
+    display: flex;
+    opacity:0.6;
+  
+  }
+  
+  .tweet-class header img{
+    float:left;
+    border-radius: 10px;
+    
+     display: inline-block;
+     width : 75px;
+     height: 75px;
+  }
+  
+  .tweet-class h1{
+    float: left;
+    margin-top: 0px;
+    margin-left: 10px;
+    font-size: 20px;
+    width: 35%
+
+ 
+  }
+  .tweet-class header p{
+    float:right;
+   
+  margin-left:25%;
+  }
+
+.tweet-class .tweet-place p{
+    padding-left: 20px;
+    padding-top: 20px;
+   
+}
+
+.tweet-class .footer{
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+
+  .tweet-class .tweet-place{
+      height: 80px;
+  }
+
+  .tweet-class .footer {
+    height: 30px;
+    border-top: 1px solid rgba(0,0,0,0.3);
+    width: 100%;
+
+}
+
+.tweet-class .footer p{
+    float:left;
+    margin-top: 0;
+   
+}
+
+
+.tweet-class i{
+    float:right;
+    width:8%;
+   opacity:0;
+}
+
+
+
+
+.tweet-class:hover .tweet-class{
+    border: 1px solid black;
+}
+
+.tweet-class:hover header {
+        opacity: 1;
+  }
+  
+.tweet-class:hover header img {
+    opacity :1;
+}
+.tweet-class:hover h1{
+    opacity:1;
+}
+.tweet-class:hover header p {
+    opacity:1;
+}
+
+.tweet-class:hover i{
+    opacity:1;
+}  
