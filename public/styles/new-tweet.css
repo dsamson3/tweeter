@@ -1,0 +1,29 @@
+.new-tweet {
+    border: 1px solid grey;
+    border-radius: 4px;
+    margin: 0em 2em 5em 2em;
+    background-color: #eee;
+
+}
+
+
+textarea {
+    width: 94%;
+   margin-left: 3%;
+   margin-right: 3%;
+    
+}
+
+
+
+h2 {
+    margin: 0px 5px 20px 5px;
+    border-bottom: 3px solid #000;
+}
+
+span.counter {
+ margin-left: 195px;
+}
+input[value="Tweet"] {
+    margin: 0px 90px 10px 10px;
+}
