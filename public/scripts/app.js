@@ -8,7 +8,19 @@
 
   $(document).ready(function() { 
     loadTweets(); 
-  
+  //hide tweet box
+    $(".new-tweet").hide();
+
+
+    ///slide toggle
+    $("#compose").click(function() {
+        $(".new-tweet").slideToggle(500);
+        $("#textBoi").focus();
+    });
+    
+
+
+
     // Post Tweet Ajax 
 
   $("#tweet-form").submit( function(event){
@@ -41,13 +53,14 @@
      })
     
  }
+
+
    // Escape unsafe characters
    function escape(str) {
     var article = document.createElement('article');
     article.appendChild(document.createTextNode(str));
     return article.innerHTML;
-  }
-
+   }
 
    // Creating New tweet Element via Jquery
 function createTweetElement(tweetData){

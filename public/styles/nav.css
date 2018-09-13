@@ -22,3 +22,11 @@
     font-size: 2rem;
     line-height: 2.5;
 }
+
+#compose {
+    float:right;
+    height:60px;
+    width:100px;
+    margin-top: 10px;
+   
+}
