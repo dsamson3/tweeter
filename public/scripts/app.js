@@ -26,6 +26,7 @@
         type: request_method,
         data: formData
     }).done(function(){
+        loadTweets();
        $("#textBoi").val('').empty();
         console.log('Success Posted tweet to server');
      })};
@@ -36,13 +37,21 @@
      data.forEach(function(tweet){
          var $tweet = createTweetElement(tweet);
         $(".tweet-id").prepend($tweet);
+        
      })
-         loadTweets();
+    
  }
-   
+   // Escape unsafe characters
+   function escape(str) {
+    var article = document.createElement('article');
+    article.appendChild(document.createTextNode(str));
+    return article.innerHTML;
+  }
+
+
    // Creating New tweet Element via Jquery
 function createTweetElement(tweetData){
-    $tweet = $("<article>").addClass("tweet-class");
+    $tweet = $("<article>");
     let html = `
     <header>
     <img src="${tweetData.user.avatars.small}"/>
@@ -50,7 +59,7 @@ function createTweetElement(tweetData){
      <p>${tweetData.user.handle}</p>
     </header>
     <div class="tweet-place">
-         <p>${tweetData.content.text}</p>
+         <p>${escape(`${tweetData.content.text}`)}</p>
     </div>
     <footer class="footer">
     <p>${tweetData.created_at}</p>
@@ -59,7 +68,7 @@ function createTweetElement(tweetData){
     <i class="fas fa-heart"></i>
     </footer>
        `;
-     $tweet =$tweet.append(html);
+     $tweet.append(html).addClass("tweet-class");
      return $tweet;
 }
       
