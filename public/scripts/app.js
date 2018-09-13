@@ -25,8 +25,8 @@
         url: post_url,
         type: request_method,
         data: formData
-    }).done(function(data){
-        $('.tweet-id').append(loadTweets(data));
+    }).done(function(){
+       $("#textBoi").val('').empty();
         console.log('Success Posted tweet to server');
      })};
     });
@@ -69,9 +69,6 @@ function loadTweets() {
     $.ajax("./tweets", {method : 'GET'})
        .done(function(data) {
        renderTweets(data);
-        })
-       .fail(function(data) {
-           alert('Failed');
         })
 };
 
