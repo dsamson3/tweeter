@@ -8,14 +8,36 @@
 
   $(document).ready(function() { 
     loadTweets(); 
+  
+    // Post Tweet Ajax 
+
+  $("#tweet-form").submit( function(event){
+    event.preventDefault();
+    let post_url = $(this).attr('action');
+    let request_method =$(this).attr('method');
+    let formData = $(this).serialize(); // Grab content of form\
+    if(formData.length < 6){
+        alert('Please Fill tweet area!')
+    } else if (formData.length > 149){
+        alert("Max Length Exceeded!")
+    }else {
+    $.ajax({
+        url: post_url,
+        type: request_method,
+        data: formData
+    }).done(function(data){
+        $('.tweet-id').append(loadTweets(data));
+        console.log('Success Posted tweet to server');
+     })};
+    });
+
 });
  function renderTweets(data) {
-      
      data.forEach(function(tweet){
-         $(".tweet-id").append(createTweetElement(tweet));
-   
+         var $tweet = createTweetElement(tweet);
+        $(".tweet-id").prepend($tweet);
      })
-         
+         loadTweets();
  }
    
    // Creating New tweet Element via Jquery
@@ -39,7 +61,7 @@ function createTweetElement(tweetData){
        `;
      $tweet =$tweet.append(html);
      return $tweet;
-   }
+}
       
 //Load tweets
 
@@ -51,22 +73,8 @@ function loadTweets() {
        .fail(function(data) {
            alert('Failed');
         })
-  };
+};
 
 
-  // Post Tweet Ajax 
 
-  $("form").on("submit", function(event){
-    event.preventDefault();
-    let formData = $("for#tweet-form").serialize(); // Grab content of form
-    if(formData === ''){
-        alert('Tweet Cannot Be Empty!')
-    }
-    $.ajax("/tweets", {method:'POST', data:formData} // submit using ajax
-    ).then(function(){ // clear form
-      $("form#tweet-form input").val('');
-      $(".tweet-id").empty();
-
-      return $.ajax('/tweets');
-    }).then(renderTweets)
-  });
+  
