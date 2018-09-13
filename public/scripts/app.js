@@ -29,9 +29,10 @@
     let post_url = $(this).attr('action');
     let request_method =$(this).attr('method');
     let formData = $(this).serialize(); // Grab content of form\
-    if(formData.length < 6){
+    let formText = $('#textBoi').val('');
+    if(formText.length < 0){
         $('#error-empty').show();
-    } else if (formData.length > 145){
+    } else if (formText.length > 140){
        $('#error-max').show();
     }else {
 
@@ -42,8 +43,9 @@
     }).done(function(){
         loadTweets();
         $('#error-max').hide();
-        $('#error-empty').hide();
+         $('#error-empty').hide();
        $("#textBoi").val('').empty();
+       $(".counter").html("140")
         console.log('Success Posted tweet to server');
      })};
     });
@@ -81,7 +83,7 @@ function createTweetElement(tweetData){
          <p>${escape(`${tweetData.content.text}`)}</p>
     </div>
     <footer class="footer">
-    <p>${tweetData.created_at}</p>
+    <p>${Date(tweetData.created_at)}</p>
     <i class="fas fa-flag"></i>
     <i class="fas fa-retweet"></i>
     <i class="fas fa-heart"></i>
