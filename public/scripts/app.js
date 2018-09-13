@@ -10,7 +10,8 @@
     loadTweets(); 
   //hide tweet box
     $(".new-tweet").hide();
-
+    $('#error-max').hide();
+    $('#error-empty').hide();
 
     ///slide toggle
     $("#compose").click(function() {
@@ -29,22 +30,27 @@
     let request_method =$(this).attr('method');
     let formData = $(this).serialize(); // Grab content of form\
     if(formData.length < 6){
-        alert('Please Fill tweet area!')
-    } else if (formData.length > 149){
-        alert("Max Length Exceeded!")
+        $('#error-empty').show();
+    } else if (formData.length > 145){
+       $('#error-max').show();
     }else {
+
     $.ajax({
         url: post_url,
         type: request_method,
         data: formData
     }).done(function(){
         loadTweets();
+        $('#error-max').hide();
+        $('#error-empty').hide();
        $("#textBoi").val('').empty();
         console.log('Success Posted tweet to server');
      })};
     });
 
 });
+
+// Render Tweets
  function renderTweets(data) {
      data.forEach(function(tweet){
          var $tweet = createTweetElement(tweet);
