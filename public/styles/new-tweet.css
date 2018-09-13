@@ -140,3 +140,19 @@ input[value="Tweet"] {
 .tweet-class:hover i{
     opacity:1;
 }  
+
+
+
+#error-empty {
+    color: darkred;
+    background-color: lightcoral;
+    margin-left:10px;
+    padding: 0 10px 0 10px;
+}
+
+#error-max {
+    color: darkred;
+    background-color: lightcoral;
+    margin-left:15px;
+    padding: 0 10px 0 10px;
+}
