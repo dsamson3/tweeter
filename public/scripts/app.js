@@ -20,8 +20,6 @@
     });
     
 
-
-
     // Post Tweet Ajax 
 
   $("#tweet-form").submit( function(event){
@@ -72,6 +70,28 @@
     return article.innerHTML;
    }
 
+
+// time since
+function timeSince(date) {
+    var currentDate = Date.now();
+    var howLongAgoSeconds = (currentDate - date) / 1000 / 60;
+    var howLongAgoMinutes = (currentDate - date) / 1000 / 60;
+    var howLongAgoHours = (currentDate - date) / 1000 / 60 / 60;
+    if (howLongAgoMinutes < 1) {
+      return `${Math.floor(howLongAgoSeconds)} seconds ago`;
+    } else if (howLongAgoMinutes > 1 && howLongAgoMinutes < 60) {
+      return `${Math.floor(howLongAgoMinutes)} minutes ago`;
+    } else if (howLongAgoMinutes > 60 && howLongAgoHours < 24) {
+      return `${Math.floor(howLongAgoHours)} hours ago`;
+    } else if (howLongAgoHours > 24) {
+      return `${Math.floor(howLongAgoHours / 24)} days ago`;
+    }
+  }
+
+
+
+
+
    // Creating New tweet Element via Jquery
 function createTweetElement(tweetData){
     $tweet = $("<article>");
@@ -85,7 +105,7 @@ function createTweetElement(tweetData){
          <p>${escape(`${tweetData.content.text}`)}</p>
     </div>
     <footer class="footer">
-    <p>${tweetData.created_at}</p>
+    <p>${timeSince(`${tweetData.created_at}`)}</p>
     <i class="fas fa-flag"></i>
     <i class="fas fa-retweet"></i>
     <i class="fas fa-heart"></i>
@@ -106,4 +126,3 @@ function loadTweets() {
 
 
 
-  
