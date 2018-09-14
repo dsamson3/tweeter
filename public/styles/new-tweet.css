@@ -25,12 +25,16 @@ span.counter {
  margin-left: 195px;
 }
 input[value="Tweet"] {
-    margin: 0px 90px 10px 10px;
+    margin: 0px 50px 10px 10px;
     border-radius: 30px;
-    padding: 5px;
+    padding: 0 20px 0 20px;
+    opacity: 0.6;
 }
 
-
+input[value="Tweet"]:hover{
+    opacity:1;
+    
+}
 
 /* Colour for char counter */
 

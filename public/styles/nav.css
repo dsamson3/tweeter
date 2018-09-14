@@ -29,6 +29,12 @@
     height:30px;
     width:100px;
     margin-top: 20px;
+    margin-right: 10px;
     border-radius: 30px;
+    opacity: 0.6;
    
+}
+
+#compose:hover {
+    opacity:1;
 }
