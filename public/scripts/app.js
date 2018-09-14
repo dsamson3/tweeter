@@ -1,25 +1,18 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-// Hard coded Tweet Database
-
+// Document Ready Function
 
   $(document).ready(function() { 
     loadTweets(); 
-  //hide tweet box
+  //hide tweet box on Page load along with Error Messages
     $(".new-tweet").hide();
     $('#error-max').hide();
     $('#error-empty').hide();
 
-    ///slide toggle
+    ///slide toggle on compose buttin
     $("#compose").click(function() {
         $(".new-tweet").slideToggle(500);
         $("#textBoi").focus();
     });
     
-
     // Post Tweet Ajax 
 
   $("#tweet-form").submit( function(event){
@@ -28,40 +21,37 @@
     let request_method =$(this).attr('method');
     let formData = $(this).serialize(); // Grab content of form\
     let formText = $('#textBoi').val();
-    console.log(formText.length)
-    if(formText.length < 1){
+
+    if(formText.length < 1){        // error messages when form is submitted
         $('#error-empty').show();
         $('#error-max').hide();
     } else if (formText.length > 140){
        $('#error-max').show();
        $('#error-empty').hide();
     }else {
-    $.ajax({
+     $.ajax({
         url: post_url,
         type: request_method,
         data: formData
-    }).done(function(){
+     }).done(function(){
         loadTweets();
         $('#error-max').hide();
-         $('#error-empty').hide();
-       $("#textBoi").val('').empty();
-       $(".counter").html("140")
+        $('#error-empty').hide();
+        $("#textBoi").val('').empty();
+        $(".counter").html("140")
         console.log('Success Posted tweet to server');
      })};
     });
 
 });
 
-// Render Tweets
+// Render Tweets in revers chronological order
  function renderTweets(data) {
      data.forEach(function(tweet){
          var $tweet = createTweetElement(tweet);
         $(".tweet-id").prepend($tweet);
-        
      })
-    
  }
-
 
    // Escape unsafe characters
    function escape(str) {
@@ -71,7 +61,7 @@
    }
 
 
-// time since
+// Function to conver unix timestamp to relative time
 function timeSince(date) {
     var currentDate = Date.now();
     var howLongAgoSeconds = (currentDate - date) / 1000 / 60;
@@ -87,9 +77,6 @@ function timeSince(date) {
       return `${Math.floor(howLongAgoHours / 24)} days ago`;
     }
   }
-
-
-
 
 
    // Creating New tweet Element via Jquery

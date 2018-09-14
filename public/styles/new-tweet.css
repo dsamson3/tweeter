@@ -26,6 +26,8 @@ span.counter {
 }
 input[value="Tweet"] {
     margin: 0px 90px 10px 10px;
+    border-radius: 30px;
+    padding: 5px;
 }
 
 
@@ -58,8 +60,6 @@ input[value="Tweet"] {
   .tweet-class header img{
     float:left;
     border-radius: 10px;
-    
-     display: inline-block;
      width : 75px;
      height: 75px;
   }

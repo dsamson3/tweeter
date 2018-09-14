@@ -3,7 +3,7 @@
     top: 0;
     height: 80px;
     width: 100%;
-    background-color: #00a087;
+    background-color: #1DA1F7;
     color: #e8fdff;
     padding-left: 2em;
     padding-right: 2em;
@@ -14,6 +14,7 @@
     float: left;
     width: 80px;
     height: 80px;
+    
 }
 
 #nav-bar .header{
@@ -25,8 +26,9 @@
 
 #compose {
     float:right;
-    height:60px;
+    height:30px;
     width:100px;
-    margin-top: 10px;
+    margin-top: 20px;
+    border-radius: 30px;
    
 }
