@@ -83,7 +83,7 @@ function createTweetElement(tweetData){
          <p>${escape(`${tweetData.content.text}`)}</p>
     </div>
     <footer class="footer">
-    <p>${Date(tweetData.created_at)}</p>
+    <p>${tweetData.created_at}</p>
     <i class="fas fa-flag"></i>
     <i class="fas fa-retweet"></i>
     <i class="fas fa-heart"></i>
