@@ -29,13 +29,15 @@
     let post_url = $(this).attr('action');
     let request_method =$(this).attr('method');
     let formData = $(this).serialize(); // Grab content of form\
-    let formText = $('#textBoi').val('');
-    if(formText.length < 0){
+    let formText = $('#textBoi').val();
+    console.log(formText.length)
+    if(formText.length < 1){
         $('#error-empty').show();
+        $('#error-max').hide();
     } else if (formText.length > 140){
        $('#error-max').show();
+       $('#error-empty').hide();
     }else {
-
     $.ajax({
         url: post_url,
         type: request_method,
